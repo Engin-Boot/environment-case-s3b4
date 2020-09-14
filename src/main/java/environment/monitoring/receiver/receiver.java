@@ -34,7 +34,7 @@ public class receiver {
 	    
 	    for(String s : valuesList ) {
 	    	
-	    	values = s.split("="); //s
+	    	values = s.split("="); //sq
 	    	try {
 	    		parameterValue.put(values[0], values[1]);
 	    	}
