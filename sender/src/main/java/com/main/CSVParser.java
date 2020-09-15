@@ -16,20 +16,32 @@ public class CSVParser {
 	        
 	        while ((nextRecord = csvReader.readNext()) != null) { 
 	        	
-	            for (int i =0; i< headers.length ; i++) { 
-	            	
-	            	String attributeValue = headers[i]+"="+nextRecord[i];
-	            	if(i !=headers.length -1 ) {
-	            		attributeValue = attributeValue + ", ";
-	            	}
-	              		
-	            	System.out.print(attributeValue);
-	            } 
+	        	printRecord(headers, nextRecord);
 	            System.out.println();
 	            Utils.wait(2);
 	            
 	        } 
-	    } 
+	    }
+
+	private void printRecord(String[] headers, String[] nextRecord) {
+		
+	    for (int i =0; i< headers.length ; i++) { 
+        	
+        	String attributeValue = headers[i]+"="+nextRecord[i];
+        	attributeValue = isLastElement(i, attributeValue, headers);
+          		
+        	System.out.print(attributeValue);
+        } 
+		
+	}
+
+	private String isLastElement(int i,String attributeValue, String[] headers) {
+		
+		if(i !=headers.length -1 ) {
+    		return attributeValue + ", ";
+    	}
+		return attributeValue;
+	} 
 	 
 	}
 
