@@ -14,12 +14,13 @@ public class BreachLevel {
 		boolean flag=true;
 		int temp=environmentConditionAttributes.get("temperature");
 		int humid=environmentConditionAttributes.get("humidity");
-		flag &= temperatureBreachCheck(temp);
-		flag &= HumidityBreachCheck(humid);
+		flag &= warnAndErrorCheck(temp, tempWarnLimit[0], tempErrorLimit[0], tempWarnLimit[1], tempErrorLimit[1]);
+		flag &= warnAndErrorCheck(humid, humidityWarnLimit[0], humidityErrorLimit[0], humidityWarnLimit[1], humidityErrorLimit[1]);
 		return flag;
 	}
 	
-	boolean temperatureBreachCheck(int temp)
+/*
+	 boolean temperatureBreachCheck(int temp)
 	{
 		if(warnAndErrorCheck(temp, tempWarnLimit[0], tempErrorLimit[0], tempWarnLimit[1], tempErrorLimit[1]))
 		{
@@ -36,7 +37,7 @@ public class BreachLevel {
 		}
 		return false;
 	}
-	
+*/	
 	boolean warnAndErrorCheck(int val, int warnLow, int errorLow, int warnHigh, int errorHigh)
 	{
 		if(warnLow != -1){
