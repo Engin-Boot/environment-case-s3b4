@@ -1,4 +1,4 @@
-package com.main;
+package com.philips;
 
 public class ApplicationTest {
 

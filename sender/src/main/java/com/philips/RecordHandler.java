@@ -20,10 +20,11 @@ public class RecordHandler {
 
 	}
 
-	private static String isHeaderNull(String header, int attributeIndex) {
+	public static String isHeaderNull(String header, int attributeIndex) {
 
 		if (header.isEmpty()) {
-			return "Attribute " + attributeIndex + 1;
+			attributeIndex++;
+			return "Attribute " + attributeIndex;
 		}
 		return header;
 	}
