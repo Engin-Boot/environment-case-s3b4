@@ -9,6 +9,7 @@
 
 package com.main;
 import java.io.*;
+import java.util.Map;
 
 public class Application {
 
@@ -23,7 +24,7 @@ public class Application {
         	{
         		//Splitter s=new Splitter();
         		
-        		Splitter.splitByCommaAndEqualsSign(readInput);
+        		Map<String, Integer> environmentConditionAttributes = Splitter.splitByCommaAndEqualsSign(readInput);
         		
         		
         	readInput= br.readLine();
