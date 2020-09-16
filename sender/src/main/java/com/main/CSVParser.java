@@ -7,41 +7,45 @@ import com.opencsv.CSVReader;
 public class CSVParser {
 
 	public void parseCSV(String file) throws IOException {
-	 
-	        FileReader filereader = new FileReader(file); 
-	        CSVReader csvReader = new CSVReader(filereader); 
-	        
-	        String[] nextRecord; 
-	        String[] headers = csvReader.readNext();
-	        
-	        while ((nextRecord = csvReader.readNext()) != null) { 
-	        	
-	        	printRecord(headers, nextRecord);
-	            System.out.println();
-	            Utils.wait(2);
-	            
-	        } 
-	    }
 
-	private void printRecord(String[] headers, String[] nextRecord) {
-		
-	    for (int i =0; i< headers.length ; i++) { 
-        	
-        	String attributeValue = headers[i]+"="+nextRecord[i];
-        	attributeValue = isLastElement(i, attributeValue, headers);
-          		
-        	System.out.print(attributeValue);
-        } 
-		
+		FileReader filereader = new FileReader(file);
+		CSVReader csvReader = new CSVReader(filereader);
+
+		String[] nextRecord;
+		String[] headers = csvReader.readNext();
+
+		while ((nextRecord = csvReader.readNext()) != null) {
+
+			System.out.println(getRecord(headers, nextRecord));
+			Utils.wait(2);
+
+		}
+		csvReader.close();
 	}
 
-	private String isLastElement(int i,String attributeValue, String[] headers) {
+	protected String getRecord(String[] headers, String[] nextRecord) {
 		
-		if(i !=headers.length -1 ) {
-    		return attributeValue + ", ";
-    	}
-		return attributeValue;
-	} 
-	 
-}
+		String recordValue = "";
+		for (int i = 0; i < headers.length; i++) {
+			
+			
+			String attributeValue = headers[i] + "=" + nextRecord[i];
+			attributeValue = isLastElement(i, attributeValue, headers);
+			
+			recordValue = recordValue + attributeValue;
+		
+		}
+		return recordValue;
 
+	}
+	
+
+	private String isLastElement(int i, String attributeValue, String[] headers) {
+
+		if (i != headers.length - 1) {
+			return attributeValue + ", ";
+		}
+		return attributeValue;
+	}
+
+}
