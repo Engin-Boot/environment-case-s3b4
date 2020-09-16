@@ -4,15 +4,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.opencsv.CSVReader;
 
 public class CSVParser {
 
-	public void parseCSVLineByLine(String file){
+	public void parseCSVLineByLine(String file) throws IOException {
 
 		CSVReader csvReader = null;
-		try {  
+		try {
 			FileReader filereader = new FileReader(file);
 			csvReader = new CSVReader(filereader);
 
@@ -20,48 +21,18 @@ public class CSVParser {
 			String[] headers = csvReader.readNext();
 
 			while ((nextRecord = csvReader.readNext()) != null) {
-
-				printRecord(getRecord(headers, nextRecord));
+				
+				Map<String, String> record =RecordHandler.getRecord(headers, nextRecord);
+				if(RecordHandler.isRecordValid(record))
+					RecordHandler.printRecord(record);
 				Utils.wait(2);
 			}
 		} catch (IOException exception) {
 			exception.printStackTrace();
-		}
-		finally {
+		} finally {
 			csvReader.close();
 		}
 	}
 
-	public Map<String, String> getRecord(String[] headers, String[] nextRecord) {
-
-		Map<String, String> record = new LinkedHashMap<String, String>();
-		for (int i = 0; i < headers.length; i++) {
-
-			headers[i] = isHeaderNull(headers[i], i);
-			record.put(headers[i], nextRecord[i]);
-		}
-		return record;
-
-	}
-
-	private String isHeaderNull(String header, int i) {
-
-		if (header.isEmpty()) {
-			return "Attribute " + i;
-		}
-		return header;
-	}
-
-	public void printRecord(Map<String, String> record) {
-
-		String strRecord = record.toString();
-		System.out.println(strRecord.substring(1, strRecord.length() - 1));
-
-	}
-
-	public boolean isRecordValid(Map<String, String> record) {
-
-		return false;
-	}
 
 }
