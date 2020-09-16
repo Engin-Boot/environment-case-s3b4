@@ -35,10 +35,10 @@ public class RecordHandler {
 		return header;
 	}
 
-	public static void printRecord(Map<String, String> record) {
+	public static String formatOutput(Map<String, String> record) {
 
 		String strRecord = record.toString();
-		System.out.println(strRecord.substring(1, strRecord.length() - 1));
+		return strRecord.substring(1, strRecord.length() - 1);
 
 	}
 

@@ -2,7 +2,11 @@ package com.philips;
 
 public class Utils {
 
-	public static void wait(int secondsToSleep) {
+	private Utils() {
+		throw new IllegalStateException("Utility class");
+	}
+
+	public static void delay(long secondsToSleep) {
 
 		try {
 			Thread.sleep(secondsToSleep * 1000);

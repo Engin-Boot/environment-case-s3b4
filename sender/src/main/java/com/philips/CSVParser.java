@@ -9,15 +9,14 @@ public class CSVParser {
 
 	public void readCSV(String file) throws IOException {
 
-		//Try-with-resources - resouces are autoclosed
-		try {
-			FileReader filereader = new FileReader(file);
+		// Try-with-resources - resources are autoclosed
+		try (FileReader filereader = new FileReader(file)){
 			CSVReader csvReader = new CSVReader(filereader);
 
 			parseCSVLineByLine(csvReader);
 		} catch (IOException exception) {
 			exception.printStackTrace();
-		} 
+		}
 	}
 
 	public void parseCSVLineByLine(CSVReader csvReader) throws IOException {
@@ -27,8 +26,8 @@ public class CSVParser {
 
 			Map<String, String> record = RecordHandler.getRecord(headers, nextRecord);
 			record = RecordHandler.isRecordValid(record);
-				RecordHandler.printRecord(record);
-			Utils.wait(2);
+			System.out.println(RecordHandler.formatOutput(record));
+			Utils.delay(2);
 		}
 	}
 
