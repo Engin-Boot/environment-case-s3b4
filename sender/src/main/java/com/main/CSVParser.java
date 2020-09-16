@@ -9,7 +9,7 @@ import com.opencsv.CSVReader;
 
 public class CSVParser {
 
-	public void parseCSVLineByLine(String file) throws IOException {
+	public void parseCSVLineByLine(String file){
 
 		CSVReader csvReader = null;
 		try {  
@@ -28,7 +28,6 @@ public class CSVParser {
 			exception.printStackTrace();
 		}
 		finally {
-			
 			csvReader.close();
 		}
 	}
