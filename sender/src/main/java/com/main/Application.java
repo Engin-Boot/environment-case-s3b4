@@ -12,7 +12,7 @@ public class Application {
 
 		CSVParser parser = new CSVParser();
 
-		parser.parseCSV(FILE_PATH);
+		parser.parseCSVLineByLine(FILE_PATH);
 
 	}
 

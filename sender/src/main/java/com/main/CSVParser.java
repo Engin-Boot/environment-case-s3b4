@@ -2,14 +2,14 @@ package com.main;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.opencsv.CSVReader;
 
 public class CSVParser {
 
-	public void parseCSV(String file) throws IOException {
+	public void parseCSVLineByLine(String file) throws IOException {
 
 		FileReader filereader = new FileReader(file);
 		CSVReader csvReader = new CSVReader(filereader);
@@ -28,7 +28,7 @@ public class CSVParser {
 
 	protected Map<String, String> getRecord(String[] headers, String[] nextRecord) {
 		
-		Map<String, String> record = new HashMap<String, String>();
+		Map<String, String> record = new LinkedHashMap<String, String>();
 		String recordValue = "";
 		for (int i = 0; i < headers.length; i++) {
 			
@@ -39,13 +39,4 @@ public class CSVParser {
 
 	}
 	
-
-	private String isLastElement(int i, String attributeValue, String[] headers) {
-
-		if (i != headers.length - 1) {
-			return attributeValue + ", ";
-		}
-		return attributeValue;
-	}
-
 }
