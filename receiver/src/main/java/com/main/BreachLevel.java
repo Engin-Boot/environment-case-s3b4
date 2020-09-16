@@ -1,4 +1,6 @@
 package com.main;
+import java.io.InputStream;
+import java.util.*;
 
 import java.util.Map;
 
@@ -14,6 +16,11 @@ public class BreachLevel {
 		boolean flag=true;
 		int temp=environmentConditionAttributes.get("temperature");
 		int humid=environmentConditionAttributes.get("humidity");
+		
+		environmentConditionAttributes.forEach((k, v) -> {
+			System.out.println(k + " : " + (v + 10));
+		});
+		
 		flag &= warnAndErrorCheck(temp, tempWarnLimit[0], tempErrorLimit[0], tempWarnLimit[1], tempErrorLimit[1]);
 		flag &= warnAndErrorCheck(humid, humidityWarnLimit[0], humidityErrorLimit[0], humidityWarnLimit[1], humidityErrorLimit[1]);
 		return flag;

@@ -21,13 +21,12 @@ public class Application {
         	String readInput= br.readLine();
         	while(readInput!=null)
         	{
-        		//Splitter s=new Splitter();
         		
         		Map<String, Integer> environmentConditionAttributes = Splitter.splitByCommaAndEqualsSign(readInput);
         		bl.isOperatingConditionsOk(environmentConditionAttributes);
         		
         	readInput= br.readLine();
-        	//System.out.println("Printing the input read via console: "+ readInput);
+        	
         	}
         } catch(IOException e){
         	System.out.println(e);
