@@ -2,7 +2,7 @@
  * @author: anaghesh.m@philips.com
  * 
 */
-package com.main;
+package com.philips;
 
 public class Application {
 
@@ -12,7 +12,7 @@ public class Application {
 
 		CSVParser parser = new CSVParser();
 
-		parser.parseCSVLineByLine(FILE_PATH);
+		parser.readCSV(FILE_PATH);
 
 	}
 

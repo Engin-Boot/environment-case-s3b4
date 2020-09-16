@@ -1,4 +1,4 @@
-package com.main;
+package com.philips;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

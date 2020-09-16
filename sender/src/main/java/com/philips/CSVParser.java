@@ -1,4 +1,4 @@
-package com.main;
+package com.philips;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class CSVParser {
 			csvReader.close();
 		}
 	}
-	
+
 	public void parseCSVLineByLine(CSVReader csvReader) throws IOException {
 		String[] nextRecord;
 		String[] headers = csvReader.readNext();
