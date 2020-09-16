@@ -26,7 +26,7 @@ public class CSVParser {
 		while ((nextRecord = csvReader.readNext()) != null) {
 
 			Map<String, String> record = RecordHandler.getRecord(headers, nextRecord);
-			if (RecordHandler.isRecordValid(record))
+			record = RecordHandler.isRecordValid(record);
 				RecordHandler.printRecord(record);
 			Utils.wait(2);
 		}
