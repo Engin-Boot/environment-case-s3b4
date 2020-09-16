@@ -1,5 +1,7 @@
 package com.main;
 
+import java.util.Map;
+
 public class BreachLevel {
 
 	int[] tempWarnLimit = {4 , 37};
@@ -7,9 +9,11 @@ public class BreachLevel {
 	int[] humidityWarnLimit = {-1 , 70};
 	int[] humidityErrorLimit = {-1 , 90};
 	
-	boolean isOperatingConditionsOk(int temp,int humid){
+	 boolean isOperatingConditionsOk(Map<String, Integer> environmentConditionAttributes){
 		
 		boolean flag=true;
+		int temp=environmentConditionAttributes.get("temperature");
+		int humid=environmentConditionAttributes.get("humidity");
 		flag &= temperatureBreachCheck(temp);
 		flag &= HumidityBreachCheck(humid);
 		return flag;
