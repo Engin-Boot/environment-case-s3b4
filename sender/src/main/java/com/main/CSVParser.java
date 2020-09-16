@@ -28,6 +28,7 @@ public class CSVParser {
 			exception.printStackTrace();
 		}
 		finally {
+			
 			csvReader.close();
 		}
 	}
