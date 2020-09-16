@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Splitter {
 
-	static BreachLevel bl=new BreachLevel();
+	//static BreachLevel bl=new BreachLevel();
 	
 	 public static Map<String, Integer> splitByCommaAndEqualsSign(String readInput)
 	{
