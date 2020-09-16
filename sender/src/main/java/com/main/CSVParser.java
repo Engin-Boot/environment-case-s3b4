@@ -12,7 +12,7 @@ public class CSVParser {
 	public void parseCSVLineByLine(String file) throws IOException {
 
 		CSVReader csvReader = null;
-		try {
+		try { 
 			FileReader filereader = new FileReader(file);
 			csvReader = new CSVReader(filereader);
 
