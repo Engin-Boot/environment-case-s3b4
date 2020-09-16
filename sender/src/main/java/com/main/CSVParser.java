@@ -10,29 +10,31 @@ import com.opencsv.CSVReader;
 
 public class CSVParser {
 
-	public void parseCSVLineByLine(String file) throws IOException {
+	public void readCSV(String file) throws IOException {
 
 		CSVReader csvReader = null;
 		try {
 			FileReader filereader = new FileReader(file);
 			csvReader = new CSVReader(filereader);
-
-			String[] nextRecord;
-			String[] headers = csvReader.readNext();
-
-			while ((nextRecord = csvReader.readNext()) != null) {
-				
-				Map<String, String> record =RecordHandler.getRecord(headers, nextRecord);
-				if(RecordHandler.isRecordValid(record))
-					RecordHandler.printRecord(record);
-				Utils.wait(2);
-			}
+			
+			parseCSVLineByLine(csvReader);
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		} finally {
 			csvReader.close();
 		}
 	}
+	
+	public void parseCSVLineByLine(CSVReader csvReader) throws IOException {
+		String[] nextRecord;
+		String[] headers = csvReader.readNext();
+		while ((nextRecord = csvReader.readNext()) != null) {
 
+			Map<String, String> record = RecordHandler.getRecord(headers, nextRecord);
+			if (RecordHandler.isRecordValid(record))
+				RecordHandler.printRecord(record);
+			Utils.wait(2);
+		}
+	}
 
 }
