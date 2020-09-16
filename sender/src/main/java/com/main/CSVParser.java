@@ -2,6 +2,9 @@ package com.main;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.opencsv.CSVReader;
 
 public class CSVParser {
@@ -23,19 +26,16 @@ public class CSVParser {
 		csvReader.close();
 	}
 
-	protected String getRecord(String[] headers, String[] nextRecord) {
+	protected Map<String, String> getRecord(String[] headers, String[] nextRecord) {
 		
+		Map<String, String> record = new HashMap<String, String>();
 		String recordValue = "";
 		for (int i = 0; i < headers.length; i++) {
 			
-			
-			String attributeValue = headers[i] + "=" + nextRecord[i];
-			attributeValue = isLastElement(i, attributeValue, headers);
-			
-			recordValue = recordValue + attributeValue;
+			record.put(headers[i], nextRecord[i]);
 		
 		}
-		return recordValue;
+		return record;
 
 	}
 	
