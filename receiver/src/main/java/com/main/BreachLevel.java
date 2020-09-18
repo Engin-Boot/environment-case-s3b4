@@ -3,25 +3,31 @@ import java.util.Map;
 
 public class BreachLevel {
 
-	int[] tempWarnLimit = {4 , 37};
-	int[] tempErrorLimit = {0 , 40};
-	int[] humidityWarnLimit = {-2147483648 , 70};
-	int[] humidityErrorLimit = {-2147483648 , 90};
-	boolean flag=true;
+	final int[] tempWarnLimit = {4 , 37};
+	final int[] tempErrorLimit = {0 , 40};
+	final int[] humidityWarnLimit = {-2147483648 , 70};
+	final int[] humidityErrorLimit = {-2147483648 , 90};
+	//flag &= temperatureBreachCheck(environmentConditionAttributes.get(temperature);
+	//flag &= humidityBreachCheck(environmentConditionAttributes.get(humidity);
 	
 	 boolean isOperatingConditionsOk(Map<String, Integer> environmentConditionAttributes){
 		
-		environmentConditionAttributes.forEach((attribute, currentValue) -> {
+		 boolean flag=true;
+		//environmentConditionAttributes.forEach((attribute, currentValue) -> {
 			
-			flag &= warnCheck(attribute, currentValue, tempWarnLimit[0], tempWarnLimit[1]);
-			flag &= errorCheck(attribute, currentValue, tempErrorLimit[0], tempErrorLimit[1]);
-			//flag &= warnCheck(humid, humidityWarnLimit[0], humidityWarnLimit[1]);
-			//flag &= errorCheck(humid, humidityErrorLimit[0], humidityErrorLimit[1]);
+			if(errorCheck("temperature", environmentConditionAttributes.get("temperature"), tempErrorLimit[0], tempErrorLimit[1]))
+			flag &= warnCheck("temperature", environmentConditionAttributes.get("temperature"), tempWarnLimit[0], tempWarnLimit[1]);
 			
-			System.out.println(attribute + " : " + currentValue);
-		});
+			if(errorCheck("humidity", environmentConditionAttributes.get("humidity"), humidityErrorLimit[0], humidityErrorLimit[1]))
+			flag &= warnCheck("humidity", environmentConditionAttributes.get("humidity"), humidityWarnLimit[0], humidityWarnLimit[1]);
+			
+			
+		//flag &= warnCheck(attribute, currentValue, humidityWarnLimit[0], humidityWarnLimit[1]);
+		//flag &= errorCheck(attribute, currentValue, humidityErrorLimit[0], humidityErrorLimit[1]);
+		//System.out.println(attribute + " : " + currentValue+" "+flag1);
+		//});
 		
-		return flag;
+		return (flag);
 		}
 	
 /*
@@ -45,15 +51,17 @@ public class BreachLevel {
 */	
 	 boolean warnCheck(String attribute, int val, int warnLow, int warnHigh)
 	 {
+		 //System.out.println(attribute + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
+		 
 		 if(val < warnLow)
 	        {
-	            System.out.println("There is a WARN level LOW limit breach for "+attribute+" in the " + Thread.currentThread().getStackTrace()[2].getMethodName());
+	            System.out.println("There is a WARN level LOW limit breach for "+attribute);
 	            return false;
 	        }
 		 
 		 if(val > warnHigh)
 	        {
-	            System.out.println("There is a WARN level HIGH limit breach for "+attribute+" in the " + Thread.currentThread().getStackTrace()[2].getMethodName());
+	            System.out.println("There is a WARN level HIGH limit breach for "+attribute);
 	            return false;
 	        }
 		 return true;
@@ -61,15 +69,16 @@ public class BreachLevel {
 	 
 	 boolean errorCheck(String attribute, int val, int errorLow, int errorHigh)
 	 {
+		 //System.out.println(attribute + " : " + val +" error-low "+errorLow+" error-high "+errorHigh);
 		 if(val < errorLow)
 	        {
-	            System.out.println("There is a ERROR level LOW limit breach for "+attribute+" in the " + Thread.currentThread().getStackTrace()[2].getMethodName());
+	            System.out.println("There is a ERROR level LOW limit breach for "+attribute);
 	            return false;
 	        }
 		 
 		 if(val > errorHigh)
 	        {
-	            System.out.println("There is a ERROR level HIGH limit breach for "+attribute+" in the " + Thread.currentThread().getStackTrace()[2].getMethodName());
+	            System.out.println("There is a ERROR level HIGH limit breach for "+attribute);
 	            return false;
 	        }
 		 return true;

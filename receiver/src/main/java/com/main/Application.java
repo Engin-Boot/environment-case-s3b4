@@ -15,7 +15,6 @@ public class Application {
 	public static void main(String[] args){
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		BreachLevel bl=new BreachLevel();
-		//Splitter s=new Splitter();
         
 		try{
         	String readInput= br.readLine();

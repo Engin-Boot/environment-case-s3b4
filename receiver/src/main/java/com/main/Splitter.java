@@ -7,7 +7,7 @@ public class Splitter {
 	{
 		String[] commaSeperatedAttributes = readInput.split("\\s*,\\s*");
 		
-		Map<String, Integer> environmentConditionAttributes = new HashMap<>();
+		Map<String, Integer> environmentConditionAttributes = new HashMap<>(); //If, new attribute is added, no need to make change in the code.
 		
 		for(int i=0; i<commaSeperatedAttributes.length; i++){
 			
