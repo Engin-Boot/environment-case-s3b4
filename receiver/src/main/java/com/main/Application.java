@@ -14,15 +14,16 @@ public class Application {
 
 	public static void main(String[] args){
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		BreachLevel bl=new BreachLevel();
+		BreachLevel breachObj=new BreachLevel();
+		
         
 		try{
         	String readInput= br.readLine();
         	while(readInput!=null)
         	{
         		
-        		Map<String, Integer> environmentConditionAttributes = Splitter.splitByCommaAndEqualsSign(readInput);
-        		bl.isOperatingConditionsOk(environmentConditionAttributes);
+        	Map<String, Integer> environmentConditionAttributes = Splitter.splitByCommaAndEqualsSign(readInput);
+        	breachObj.isOperatingConditionsOk(environmentConditionAttributes);
         	readInput= br.readLine();
         	
         	}
