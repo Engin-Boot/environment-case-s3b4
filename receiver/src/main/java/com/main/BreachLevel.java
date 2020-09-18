@@ -8,7 +8,6 @@ public class BreachLevel {
 	final int[] humidityWarnLimit = {-2147483648 , 70};
 	final int[] humidityErrorLimit = {-2147483648 , 90};
 	//flag &= temperatureBreachCheck(environmentConditionAttributes.get(temperature);
-	//flag &= humidityBreachCheck(environmentConditionAttributes.get(humidity);
 	
 	 boolean isOperatingConditionsOk(Map<String, Integer> environmentConditionAttributes){
 		
