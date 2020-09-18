@@ -22,7 +22,7 @@ public class Application {
         	{
         		
         		Map<String, Integer> environmentConditionAttributes = Splitter.splitByCommaAndEqualsSign(readInput);
-        		bl.isOperatingConditionsOk(environmentConditionAttributes);
+        		if(bl.isOperatingConditionsOk(environmentConditionAttributes))
         		System.out.println("Ideal working condition maintained :)");
         	readInput= br.readLine();
         	
