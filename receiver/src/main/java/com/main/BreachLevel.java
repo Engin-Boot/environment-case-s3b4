@@ -3,6 +3,7 @@ import java.util.Map;
 
 public class BreachLevel {
 
+	boolean flag=true;
 	final int[] tempWarnLimit = {4 , 37};
 	final int[] tempErrorLimit = {0 , 40};
 	final int[] humidityWarnLimit = {-2147483648 , 70};
@@ -11,17 +12,22 @@ public class BreachLevel {
 	
 	 boolean isOperatingConditionsOk(Map<String, Integer> environmentConditionAttributes){
 		
-		 boolean flag=true;
+		 //boolean flag=true;
 		//environmentConditionAttributes.forEach((attribute, currentValue) -> {
-			flag &= errorCheck("temperature", environmentConditionAttributes.get("temperature"), tempErrorLimit[0], tempErrorLimit[1]);
+			
+		 /*
+		    flag &= errorCheck("temperature", environmentConditionAttributes.get("temperature"), tempErrorLimit[0], tempErrorLimit[1]);
 			if(flag)
 			flag &= warnCheck("temperature", environmentConditionAttributes.get("temperature"), tempWarnLimit[0], tempWarnLimit[1]);
 			
 			flag &= errorCheck("humidity", environmentConditionAttributes.get("humidity"), humidityErrorLimit[0], humidityErrorLimit[1]);
 			if(flag)
 			flag &= warnCheck("humidity", environmentConditionAttributes.get("humidity"), humidityWarnLimit[0], humidityWarnLimit[1]);
+		*/	
 			
-			
+			 flag &= temperatureBreachCheck(environmentConditionAttributes.get("temperature"));
+			 flag &= humidityBreachCheck(environmentConditionAttributes.get("humidity"));
+			 
 		//flag &= warnCheck(attribute, currentValue, humidityWarnLimit[0], humidityWarnLimit[1]);
 		//flag &= errorCheck(attribute, currentValue, humidityErrorLimit[0], humidityErrorLimit[1]);
 		//System.out.println(attribute + " : " + currentValue+" "+flag1);
@@ -29,26 +35,25 @@ public class BreachLevel {
 		
 		return (flag);
 		}
-	
-/*
-	 boolean temperatureBreachCheck(int temp)
-	{
-		if(warnAndErrorCheck(temp, tempWarnLimit[0], tempErrorLimit[0], tempWarnLimit[1], tempErrorLimit[1]))
-		{
-			return true;
-		}
-		return false;
-	}
-	
-	boolean HumidityBreachCheck(int humid)
-	{
-		if(warnAndErrorCheck(humid, humidityWarnLimit[0], humidityErrorLimit[0], humidityWarnLimit[1], humidityErrorLimit[1]))
-		{
-			return true;
-		}
-		return false;
-	}
-*/	
+
+	 boolean temperatureBreachCheck(int temp){
+	 
+	 flag &= errorCheck("temperature", temp, tempErrorLimit[0], tempErrorLimit[1]);
+	 if(flag)
+	 flag &= warnCheck("temperature", temp, tempWarnLimit[0], tempWarnLimit[1]);
+	 return flag;
+	 
+	 }
+	 
+	 boolean humidityBreachCheck(int humidity){
+	 
+	 flag &= errorCheck("humidity", humidity, humidityErrorLimit[0], humidityErrorLimit[1]);
+	 if(flag)
+	 flag &= warnCheck("humidity", humidity, humidityWarnLimit[0], humidityWarnLimit[1]);
+	 return flag;
+	 
+	 }
+
 	 boolean warnCheck(String attribute, int val, int warnLow, int warnHigh)
 	 {
 		 //System.out.println(attribute + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
