@@ -14,12 +14,15 @@ public class Application {
 
 	public static void main(String[] args) throws Exception
 	{
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		
-		PropertyFileHandler propertiesFileObj = new PropertyFileHandler();
-		
-		BreachLevel breachObj=new BreachLevel();
 	try{
+		
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		
+		    PropertyFileHandler propertiesFileObj = new PropertyFileHandler();
+		
+		    BreachLevel breachObj=new BreachLevel();
+		    
 			ArrayList<Integer> warnErrorLimitsValueList = propertiesFileObj.getPropValues();
         	
 			String readInput= br.readLine();
@@ -31,14 +34,15 @@ public class Application {
         	
         	Map<String, Integer> environmentConditionAttributes = Splitter.splitByEqualsSign(commaSeperatedAttributes);
         	
-        	EnvironmentAttribute[] objAttribute = ObjectCreateService.createObjects(warnErrorLimitsValueList, environmentConditionAttributes);
+        	EnvironmentAttribute[] AttributesObj = ObjectCreateService.createObjects(warnErrorLimitsValueList, environmentConditionAttributes);
         	
-        	boolean flag=breachObj.isOperatingConditionsOk(objAttribute);
+        	boolean flag=breachObj.isOperatingConditionsOk(AttributesObj);
+        	
         	System.out.println("This is random print: "+ flag);
         	readInput= br.readLine();
         	
         	}
-        } catch(IOException e){
+        } catch(Exception e){
         	System.out.println(e);
         }
         
