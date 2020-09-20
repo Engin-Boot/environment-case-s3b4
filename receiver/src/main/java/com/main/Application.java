@@ -12,14 +12,15 @@ import java.util.Map;
 
 public class Application {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception
+	{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		BreachLevel breachObj=new BreachLevel();
-		PropertyFileHandler properties = new PropertyFileHandler();
-		ObjectCreateService ObjServ = new ObjectCreateService();
 		
-		try{
-			ArrayList<Integer> warnErrorLimitsValueList = properties.getPropValues();
+		PropertyFileHandler propertiesFileObj = new PropertyFileHandler();
+		
+		BreachLevel breachObj=new BreachLevel();
+	try{
+			ArrayList<Integer> warnErrorLimitsValueList = propertiesFileObj.getPropValues();
         	
 			String readInput= br.readLine();
         	
@@ -30,10 +31,10 @@ public class Application {
         	
         	Map<String, Integer> environmentConditionAttributes = Splitter.splitByEqualsSign(commaSeperatedAttributes);
         	
-        	EnvironmentAttribute[] objAttribute = ObjServ.createObjects(warnErrorLimitsValueList, environmentConditionAttributes);
+        	EnvironmentAttribute[] objAttribute = ObjectCreateService.createObjects(warnErrorLimitsValueList, environmentConditionAttributes);
         	
-        	breachObj.isOperatingConditionsOk(objAttribute);
-        	
+        	boolean flag=breachObj.isOperatingConditionsOk(objAttribute);
+        	System.out.println("This is random print: "+ flag);
         	readInput= br.readLine();
         	
         	}

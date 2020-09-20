@@ -6,7 +6,7 @@ import java.util.Map;
 public class ObjectCreateService {
 	
 	
-public EnvironmentAttribute[] createObjects(ArrayList<Integer> warnErrorLimitsValueList, Map<String, Integer> environmentConditionAttributes)
+public static EnvironmentAttribute[] createObjects(ArrayList<Integer> warnErrorLimitsValueList, Map<String, Integer> environmentConditionAttributes)
 {
 	EnvironmentAttribute[] objAttribute = new EnvironmentAttribute[environmentConditionAttributes.size()];
 	int flag1 =0;
@@ -22,7 +22,6 @@ public EnvironmentAttribute[] createObjects(ArrayList<Integer> warnErrorLimitsVa
     }
 	
     return objAttribute;
-	//EnvironmentAttribute[] objAttribute = new EnvironmentAttribute[5];
 }
 
 }

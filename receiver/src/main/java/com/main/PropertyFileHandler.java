@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class PropertyFileHandler {
 
-	public  ArrayList<Integer> getPropValues() throws IOException {
+	public ArrayList<Integer> getPropValues() throws IOException {
 		
 		Map<String, Integer> warnErrorLimits = new LinkedHashMap<String, Integer>();
 		
@@ -18,7 +18,6 @@ public class PropertyFileHandler {
 		Properties prop = new Properties();	
 		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 		
-		
 		if (inputStream != null) {
 			prop.load(inputStream);
 			
@@ -26,10 +25,7 @@ public class PropertyFileHandler {
 			
 		} else {
 			throw new FileNotFoundException("property file " + propFileName + " not found in the classpath");
-		}
-		
-
-		
+		}	
 	}catch (Exception e) {
 		System.out.println("Exception: " + e);
 	}

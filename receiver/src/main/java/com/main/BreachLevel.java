@@ -1,32 +1,18 @@
 package com.main;
 
 public class BreachLevel {
-
-	//final int[] tempWarnLimit = {4 , 37};
-	//final int[] tempErrorLimit = {0 , 40};
-	//final int[] humidityWarnLimit = {-2147483648 , 70};
-	//final int[] humidityErrorLimit = {-2147483648 , 90};
-	//flag &= temperatureBreachCheck(environmentConditionAttributes.get(temperature);
 	
 	 boolean isOperatingConditionsOk(EnvironmentAttribute[] objAttribute){ // Map<String, Integer> environmentConditionAttributes
 		
-		 //boolean flag=true;
-		//environmentConditionAttributes.forEach((attribute, currentValue) -> {
 		boolean flag=true;
         for(int i=0; i<objAttribute.length; i++){
         	
         flag &= warnCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
         flag &= errorCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());	
         }
-			 
-		//flag &= warnCheck(attribute, currentValue, humidityWarnLimit[0], humidityWarnLimit[1]);
-		//flag &= errorCheck(attribute, currentValue, humidityErrorLimit[0], humidityErrorLimit[1]);
-		//System.out.println(attribute + " : " + currentValue+" "+flag1);
-		//});
 		
 		return flag;
 		}
-
 
 	 boolean warnCheck(String attributeName, int val, int warnLow, int warnHigh)
 	 {
@@ -87,9 +73,16 @@ public class BreachLevel {
 	 return flag;
 	 
 	 }
-
+		 //boolean flag=true;
+		//environmentConditionAttributes.forEach((attribute, currentValue) -> {
+        //System.out.println(attribute + " : " + currentValue+" "+flag1);
+		//});
  */
-
+//final int[] tempWarnLimit = {4 , 37};
+//final int[] tempErrorLimit = {0 , 40};
+//final int[] humidityWarnLimit = {-2147483648 , 70};
+//final int[] humidityErrorLimit = {-2147483648 , 90};
+//flag &= temperatureBreachCheck(environmentConditionAttributes.get(temperature);
 /*
 flag &= errorCheck("temperature", environmentConditionAttributes.get("temperature"), tempErrorLimit[0], tempErrorLimit[1]);
 if(flag)
