@@ -3,9 +3,15 @@ import java.util.*;
 
 public class Splitter {
 	
-	 public static Map<String, Integer> splitByCommaAndEqualsSign(String readInput)
+	public static String[] splitByComma(String input)
 	{
-		String[] commaSeperatedAttributes = readInput.split("\\s*,\\s*");
+		String[] commaSeperatedAttributes = input.split("\\s*,\\s*");
+		return commaSeperatedAttributes;
+	}
+	
+	 public static Map<String, Integer> splitByEqualsSign(String[] commaSeperatedAttributes) //String readInput
+	{
+		//String[] commaSeperatedAttributes = readInput.split("\\s*,\\s*");
 		
 		Map<String, Integer> environmentConditionAttributes = new HashMap<>(); //If, new attribute is added, no need to make change in the code.
 		

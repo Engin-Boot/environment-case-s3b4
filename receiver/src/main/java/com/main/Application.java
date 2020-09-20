@@ -3,11 +3,11 @@
 
   * @author: sanjeev.kumar@philips.com
 
-  *
-
  */
+
 package com.main;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Application {
@@ -15,15 +15,25 @@ public class Application {
 	public static void main(String[] args){
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		BreachLevel breachObj=new BreachLevel();
+		PropertyFileHandler properties = new PropertyFileHandler();
+		ObjectCreateService ObjServ = new ObjectCreateService();
 		
-        
 		try{
-        	String readInput= br.readLine();
-        	while(readInput!=null)
+			ArrayList<Integer> warnErrorLimitsValueList = properties.getPropValues();
+        	
+			String readInput= br.readLine();
+        	
+			while(readInput!=null)
         	{
-        		
-        	Map<String, Integer> environmentConditionAttributes = Splitter.splitByCommaAndEqualsSign(readInput);
-        	breachObj.isOperatingConditionsOk(environmentConditionAttributes);
+        	
+        	String[] commaSeperatedAttributes = Splitter.splitByComma(readInput);
+        	
+        	Map<String, Integer> environmentConditionAttributes = Splitter.splitByEqualsSign(commaSeperatedAttributes);
+        	
+        	EnvironmentAttribute[] objAttribute = ObjServ.createObjects(warnErrorLimitsValueList, environmentConditionAttributes);
+        	
+        	breachObj.isOperatingConditionsOk(objAttribute);
+        	
         	readInput= br.readLine();
         	
         	}
