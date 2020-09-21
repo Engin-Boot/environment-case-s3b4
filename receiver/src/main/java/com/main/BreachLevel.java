@@ -2,7 +2,14 @@ package com.main;
 
 public class BreachLevel {
 	
-	 boolean isOperatingConditionsOk(EnvironmentAttribute[] objAttribute){ // Map<String, Integer> environmentConditionAttributes
+/*	NotifyWhenBreach notify;
+	
+	void setNotification(NotifyWhenBreach notifiedByMain)
+	{
+		notify = notifiedByMain;
+	}
+*/	
+	boolean isOperatingConditionsOk(EnvironmentAttribute[] objAttribute){ // Map<String, Integer> environmentConditionAttributes
 		
 		boolean flag=true;
         for(int i=0; i<objAttribute.length; i++){
@@ -25,7 +32,7 @@ public class BreachLevel {
 	            return false;
 	        }
 		 
-		 if(val > warnHigh)
+		 else if(val > warnHigh)
 	        {
 	            System.out.println("There is a WARN level HIGH limit breach for "+attributeName);
 	            return false;
@@ -43,7 +50,7 @@ public class BreachLevel {
 	            return false;
 	        }
 		 
-		 if(val > errorHigh)
+		 else if(val > errorHigh)
 	        {
 	            System.out.println("There is a ERROR level HIGH limit breach for "+attributeName);
 	            return false;
