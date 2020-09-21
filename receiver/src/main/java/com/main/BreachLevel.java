@@ -14,14 +14,14 @@ public class BreachLevel {
 		//boolean flag=true;
         for(int i=0; i<objAttribute.length; i++){
         	
-        warnCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
-        errorCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());	
+        warnCheckAndSendAlert(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
+        errorCheckAndSendAlert(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());	
         }
 		
 		//flag &= 
 		}
 
-	 boolean warnCheck(String attributeName, int val, int warnLow, int warnHigh)
+	 boolean warnCheckAndSendAlert(String attributeName, int val, int warnLow, int warnHigh)
 	 {
 		 //System.out.println("check check check");
 		 //System.out.println(attributeName + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
@@ -42,7 +42,7 @@ public class BreachLevel {
 		 return true;
 	 }
 	 
-	 boolean errorCheck(String attributeName, int val, int errorLow, int errorHigh)
+	 boolean errorCheckAndSendAlert(String attributeName, int val, int errorLow, int errorHigh)
 	 {
 		 //System.out.println("----->");
 		 //System.out.println(attributeName + " : " + val +" error-low "+errorLow+" error-high "+errorHigh);
