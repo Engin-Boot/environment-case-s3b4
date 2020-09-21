@@ -8,10 +8,10 @@ public class EnvironmentAttribute {
 	private int warnHigh;
 	private int errorLow;
 	private int errorHigh;
-	//private char unit;
+	private char unit;
 	
 
-	public EnvironmentAttribute(String AttributeName, int currentValue, int warnLow, int warnHigh, int errorLow, int errorHigh) {
+	public EnvironmentAttribute(String AttributeName, int currentValue, int warnLow, int warnHigh, int errorLow, int errorHigh, char unit) {
 		//super();
 		this.AttributeName = AttributeName;
 		this.currentValue = currentValue;
@@ -19,7 +19,7 @@ public class EnvironmentAttribute {
 		this.warnHigh = warnHigh;
 		this.errorLow = errorLow;
 		this.errorHigh = errorHigh;
-		//this.unit = unit;
+		this.unit = unit;
 	}
 
 	public String getAttributeName() {
@@ -46,11 +46,20 @@ public class EnvironmentAttribute {
 		return errorHigh;
 	}
 
+	public char getUnit() {
+		return unit;
+	}
+
 	@Override
 	public String toString() {
 		return "EnvironmentAttribute [AttributeName=" + AttributeName + ", currentValue=" + currentValue + ", warnLow="
-				+ warnLow + ", warnHigh=" + warnHigh + ", errorLow=" + errorLow + ", errorHigh=" + errorHigh + "]";
+				+ warnLow + ", warnHigh=" + warnHigh + ", errorLow=" + errorLow + ", errorHigh=" + errorHigh + ", unit="
+				+ unit + "]";
 	}
+	
+	
+
+
 
 /*
 	public char getUnit() {

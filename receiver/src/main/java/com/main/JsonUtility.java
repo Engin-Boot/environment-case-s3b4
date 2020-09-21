@@ -16,12 +16,12 @@ public class JsonUtility {
 		return true;
 	}
 
-	public static Map<String, Integer> convertJsonToMap(JSONObject jsonObject) {
-		Map<String, Integer> environmentConditionAttributes = new LinkedHashMap<>();
+	public static Map<String, String> convertJsonToMap(JSONObject jsonObject) {
+		Map<String, String> environmentConditionAttributes = new LinkedHashMap<>();
 		Iterator<String> keys = jsonObject.keys();
 		while (keys.hasNext()) {
 			String key = keys.next();
-			int value = Integer.parseInt(jsonObject.getString(key).toString());
+			String value = (jsonObject.getString(key));
 			environmentConditionAttributes.put(key, value);
 		}
 		return environmentConditionAttributes;

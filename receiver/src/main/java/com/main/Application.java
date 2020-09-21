@@ -36,7 +36,7 @@ public class Application {
 
 				JSONObject jsonObject = new JSONObject(readInput.trim());
 
-				Map<String, Integer> environmentAttributesValues = JsonUtility.convertJsonToMap(jsonObject);
+				Map<String, String> environmentAttributesValues = JsonUtility.convertJsonToMap(jsonObject);
 
 				EnvironmentAttribute[] AttributesObj = ObjectCreateService.createObjects(warnErrorLimitsValueList,
 						environmentAttributesValues);

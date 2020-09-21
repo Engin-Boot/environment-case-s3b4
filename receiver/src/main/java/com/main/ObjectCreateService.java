@@ -6,7 +6,7 @@ import java.util.Map;
 public class ObjectCreateService {
 	
 	
-public static EnvironmentAttribute[] createObjects(ArrayList<Integer> warnErrorLimitsValueList, Map<String, Integer> environmentAttributesValues)
+public static EnvironmentAttribute[] createObjects(ArrayList<Integer> warnErrorLimitsValueList, Map<String, String> environmentAttributesValues)
 {
 	EnvironmentAttribute[] objAttribute = new EnvironmentAttribute[environmentAttributesValues.size()];
 	int flag1 =0;
@@ -14,14 +14,29 @@ public static EnvironmentAttribute[] createObjects(ArrayList<Integer> warnErrorL
 	
     for (String AttributeName : environmentAttributesValues.keySet())  
     {
-        int currentVal = environmentAttributesValues.get(AttributeName);
+        String currentValWithUnit = environmentAttributesValues.get(AttributeName);
+        int currentVal = getCurrentValueWithoutUnit(currentValWithUnit);
+        char unit = getUnit(currentValWithUnit);
         
         objAttribute[flag1++] = new EnvironmentAttribute(AttributeName, currentVal, warnErrorLimitsValueList.get(flag2), 
-        		                warnErrorLimitsValueList.get(flag2+1), warnErrorLimitsValueList.get(flag2+2), warnErrorLimitsValueList.get(flag2+3));
+        		                warnErrorLimitsValueList.get(flag2+1), warnErrorLimitsValueList.get(flag2+2), 
+        		                warnErrorLimitsValueList.get(flag2+3), unit);
         flag2 +=4;
     }
 	
     return objAttribute;
+}
+
+public static char getUnit(String currentValwithUnit)
+{
+	char unit = currentValwithUnit.charAt(currentValwithUnit.length()-1);
+	return unit;
+}
+
+public static int getCurrentValueWithoutUnit(String currentValwithUnit)
+{
+	int currentVal = Integer.parseInt(currentValwithUnit.substring(0, currentValwithUnit.length() - 1));
+	return currentVal;
 }
 
 }
