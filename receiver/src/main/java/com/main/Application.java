@@ -43,9 +43,11 @@ public class Application {
 				EnvironmentAttribute[] AttributesObj = ObjectCreateService.createObjects(warnErrorLimitsValueList,
 						                               environmentAttributesValues);
 
-				boolean flag = breachObj.isOperatingConditionsOk(AttributesObj);
-//
-				System.out.println("This is random print: " + flag);
+				breachObj.setNotification(new NotifyWhenBreachBySMS());
+				
+				breachObj.isOperatingConditionsOk(AttributesObj);
+
+				//System.out.println("This is random print: " + flag);
 				readInput = br.readLine();
 
 			}

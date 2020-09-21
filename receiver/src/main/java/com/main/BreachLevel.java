@@ -2,23 +2,23 @@ package com.main;
 
 public class BreachLevel {
 	
-/*	NotifyWhenBreach notify;
+	NotifyWhenBreach notify;
 	
 	void setNotification(NotifyWhenBreach notifiedByMain)
 	{
 		notify = notifiedByMain;
 	}
-*/	
-	boolean isOperatingConditionsOk(EnvironmentAttribute[] objAttribute){ // Map<String, Integer> environmentConditionAttributes
+	
+	void isOperatingConditionsOk(EnvironmentAttribute[] objAttribute){ // Map<String, Integer> environmentConditionAttributes
 		
-		boolean flag=true;
+		//boolean flag=true;
         for(int i=0; i<objAttribute.length; i++){
         	
-        flag &= warnCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
-        flag &= errorCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());	
+        warnCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
+        errorCheck(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());	
         }
 		
-		return flag;
+		//flag &= 
 		}
 
 	 boolean warnCheck(String attributeName, int val, int warnLow, int warnHigh)
@@ -28,13 +28,15 @@ public class BreachLevel {
 		 
 		 if(val < warnLow)
 	        {
-	            System.out.println("There is a WARN level LOW limit breach for "+attributeName);
+			    String AlertMsg = "There is a WARN level LOW limit breach for "+attributeName;
+			    notify.sendAlert(AlertMsg);
 	            return false;
 	        }
 		 
-		 else if(val > warnHigh)
+		 if(val > warnHigh)
 	        {
-	            System.out.println("There is a WARN level HIGH limit breach for "+attributeName);
+			    String AlertMsg = "There is a WARN level HIGH limit breach for "+attributeName;
+			    notify.sendAlert(AlertMsg);
 	            return false;
 	        }
 		 return true;
@@ -46,13 +48,15 @@ public class BreachLevel {
 		 //System.out.println(attributeName + " : " + val +" error-low "+errorLow+" error-high "+errorHigh);
 		 if(val < errorLow)
 	        {
-	            System.out.println("There is a ERROR level LOW limit breach for "+attributeName);
+			    String AlertMsg = "There is a ERROR level LOW limit breach for "+attributeName;
+			    notify.sendAlert(AlertMsg);
 	            return false;
 	        }
 		 
-		 else if(val > errorHigh)
+		 if(val > errorHigh)
 	        {
-	            System.out.println("There is a ERROR level HIGH limit breach for "+attributeName);
+			 String AlertMsg = "There is a ERROR level HIGH limit breach for "+attributeName;
+			 notify.sendAlert(AlertMsg);
 	            return false;
 	        }
 		 return true;
