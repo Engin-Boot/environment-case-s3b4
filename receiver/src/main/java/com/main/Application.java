@@ -6,46 +6,50 @@
  */
 
 package com.main;
+
 import java.io.*;
+//import org.json.simple.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 public class Application {
 
-	public static void main(String[] args) throws Exception
-	{
-		
-	try{
-		
-            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		
-		    PropertyFileHandler propertiesFileObj = new PropertyFileHandler();
-		
-		    BreachLevel breachObj=new BreachLevel();
-		    
-			ArrayList<Integer> warnErrorLimitsValueList = propertiesFileObj.getPropValues();
-        	
-			String readInput= br.readLine();
-        	
-			while(readInput!=null)
-        	{
-        	
-        	String[] commaSeperatedAttributes = Splitter.splitByComma(readInput);
-        	
-        	Map<String, Integer> environmentConditionAttributes = Splitter.splitByEqualsSign(commaSeperatedAttributes);
-        	
-        	EnvironmentAttribute[] AttributesObj = ObjectCreateService.createObjects(warnErrorLimitsValueList, environmentConditionAttributes);
-        	
-        	boolean flag=breachObj.isOperatingConditionsOk(AttributesObj);
-        	
-        	System.out.println("This is random print: "+ flag);
-        	readInput= br.readLine();
-        	
-        	}
-        } catch(Exception e){
-        	System.out.println(e);
-        }
-        
-    }
-}
+	public static void main(String[] args) throws Exception {
 
+		try {
+ 
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+			PropertyFileHandler propertiesFileObj = new PropertyFileHandler();
+
+			BreachLevel breachObj = new BreachLevel();
+
+			ArrayList<Integer> warnErrorLimitsValueList = propertiesFileObj.getPropValues();
+
+			String readInput = br.readLine();
+
+			while (readInput != null && JsonUtility.isJSONValid(readInput)) {
+
+				JSONObject jsonObject = new JSONObject(readInput.trim());
+
+				Map<String, Integer> environmentAttributesValues = JsonUtility.convertJsonToMap(jsonObject);
+
+				EnvironmentAttribute[] AttributesObj = ObjectCreateService.createObjects(warnErrorLimitsValueList,
+						environmentAttributesValues);
+
+				boolean flag = breachObj.isOperatingConditionsOk(AttributesObj);
+//
+				System.out.println("This is random print: " + flag);
+				readInput = br.readLine();
+
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+}
