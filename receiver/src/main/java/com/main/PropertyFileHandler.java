@@ -24,15 +24,8 @@ public class PropertyFileHandler {
 		if (inputStream != null) {
 			prop.load(inputStream);
 			
-			Set<Object>keySet=prop.keySet();
-			TreeSet<Object>sortedSet=new TreeSet<Object>(keySet);
-			Iterator<Object>iterator=sortedSet.iterator();
-			while(iterator.hasNext())
-			{
-				String s= iterator.next().toString();
-				warnErrorLimits.put(s,Integer.parseInt(prop.getProperty(s)));
-			    //System.out.println("checker---> "+ s);
-			}
+			warnErrorLimits = loadFile(prop);
+			
 			//System.out.println("reading start");
 			
 			//prop.forEach((key, value) -> warnErrorLimits.put(key.toString(),Integer.parseInt(value.toString())));	
@@ -56,6 +49,24 @@ public class PropertyFileHandler {
 	ArrayList<Integer> warnErrorLimitsValueList = new ArrayList<Integer>(warnErrorLimits.values());
 	return warnErrorLimitsValueList;
 }
+	
+	public Map<String, Integer> loadFile(Properties prop){
+		
+		Map<String, Integer> warnErrorLimits = new LinkedHashMap<String, Integer>();
+		//prop.load(inputStream);
+		
+		Set<Object>keySet=prop.keySet();
+		TreeSet<Object>sortedSet=new TreeSet<Object>(keySet);
+		Iterator<Object>iterator=sortedSet.iterator();
+		while(iterator.hasNext())
+		{
+			String s= iterator.next().toString();
+			warnErrorLimits.put(s,Integer.parseInt(prop.getProperty(s)));
+		    //System.out.println("checker---> "+ s);
+		}
+		return warnErrorLimits;
+	}
+	
 }
 
 /*
