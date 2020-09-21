@@ -16,7 +16,8 @@ public class BreachLevel {
 
 	 boolean warnCheck(String attributeName, int val, int warnLow, int warnHigh)
 	 {
-		 //System.out.println(attribute + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
+		 //System.out.println("----->");
+		 //System.out.println(attributeName + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
 		 
 		 if(val < warnLow)
 	        {
@@ -34,7 +35,8 @@ public class BreachLevel {
 	 
 	 boolean errorCheck(String attributeName, int val, int errorLow, int errorHigh)
 	 {
-		 //System.out.println(attribute + " : " + val +" error-low "+errorLow+" error-high "+errorHigh);
+		 //System.out.println("----->");
+		 //System.out.println(attributeName + " : " + val +" error-low "+errorLow+" error-high "+errorHigh);
 		 if(val < errorLow)
 	        {
 	            System.out.println("There is a ERROR level LOW limit breach for "+attributeName);
