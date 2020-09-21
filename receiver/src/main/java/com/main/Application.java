@@ -32,14 +32,16 @@ public class Application {
 
 			String readInput = br.readLine();
 
-			while (readInput != null && JsonUtility.isJSONValid(readInput)) {
+			while (readInput != null) {
 
+				JsonUtility.isJSONValid(readInput);
+				
 				JSONObject jsonObject = new JSONObject(readInput.trim());
 
 				Map<String, String> environmentAttributesValues = JsonUtility.convertJsonToMap(jsonObject);
 
 				EnvironmentAttribute[] AttributesObj = ObjectCreateService.createObjects(warnErrorLimitsValueList,
-						environmentAttributesValues);
+						                               environmentAttributesValues);
 
 				boolean flag = breachObj.isOperatingConditionsOk(AttributesObj);
 //
