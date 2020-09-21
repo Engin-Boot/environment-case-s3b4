@@ -16,7 +16,7 @@ public class BreachLevel {
 
 	 boolean warnCheck(String attributeName, int val, int warnLow, int warnHigh)
 	 {
-		 //System.out.println("----->");
+		 //System.out.println("check check check");
 		 //System.out.println(attributeName + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
 		 
 		 if(val < warnLow)
