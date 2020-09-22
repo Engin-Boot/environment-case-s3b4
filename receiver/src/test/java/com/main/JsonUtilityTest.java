@@ -1,12 +1,10 @@
 package com.main;
 
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -14,38 +12,27 @@ public class JsonUtilityTest {
 
 
 	@Test
-	public void ifValidJsonObjectThenDontThrowException() throws Exception {
+	public void ifValidJsonObjectThenDontThrowException() {
 		String inputLine = "{\"name\":\"sonoo\",\"age\":27}";
-		try {
-			new JSONObject(inputLine);
-		} catch (JSONException ex) {
-			//return false;
-		}
-        //return true;
+		boolean expected=true;
+		boolean actual=JsonUtility.isJSONValid(inputLine);
+		assertEquals(expected+"", actual+"");
 	}
 
 
 	@Test()
-	public void ifInvalidJsonObjectThenThowException() throws Exception {
+	public void ifInvalidJsonObjectThenThowException() {
 		String inputLine = "{\"name\"\"sonoo\"\"salary\":600000.0,\"age\":}";
-		try {
-			new JSONObject(inputLine);
-		} catch (JSONException ex) {
-			//return false;
-		}
-        //return true;
+		boolean expected=false;
+		boolean actual=JsonUtility.isJSONValid(inputLine);
+		assertEquals(expected+"", actual+"");
 	}
 
 	@Test()
 	public void ifValidJsonObjectReadThenconvertJsonToMap() {
 		JSONObject jsonObject = new JSONObject("{\"name\":\"sonoo\",\"age\":27}");
 		Map<String, String> actual = new LinkedHashMap<>();
-		Iterator<String> keys = jsonObject.keys();
-		while (keys.hasNext()) {
-			String key = keys.next();
-			String value = (jsonObject.getString(key));
-			actual.put(key, value);
-		}
+		actual = JsonUtility.convertJsonToMap(jsonObject);
 		
 		Map<String, String> expected = new LinkedHashMap<>();
 		expected.put("name", "sonoo");
@@ -58,12 +45,7 @@ public class JsonUtilityTest {
 	public void ifNullPassedInJsonObjectValueThenconvertJsonToMap() {
 		JSONObject jsonObject = new JSONObject("{\"name\":\"\",\"age\":27}");
 		Map<String, String> actual = new LinkedHashMap<>();
-		Iterator<String> keys = jsonObject.keys();
-		while (keys.hasNext()) {
-			String key = keys.next();
-			String value = (jsonObject.getString(key));
-			actual.put(key, value);
-		}
+		actual = JsonUtility.convertJsonToMap(jsonObject);
 		
 		Map<String, String> expected = new LinkedHashMap<>();
 		expected.put("name", "null");

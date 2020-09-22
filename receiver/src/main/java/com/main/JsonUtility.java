@@ -7,13 +7,13 @@ import org.json.JSONObject;
 
 public class JsonUtility {
 
-	public static void isJSONValid(String input) {
+	public static boolean isJSONValid(String input) {
 		try {
 			new JSONObject(input);
 		} catch (JSONException ex) {
-			//return false;
+			return false;
 		}
-		//return true;
+		return true;
 	}
 
 	public static Map<String, String> convertJsonToMap(JSONObject jsonObject) {

@@ -53,8 +53,40 @@ public class PropertyFileHandler {
 		}
 		return warnErrorLimits;
 	}
-	
-}
+}	
+
+/*
+ *     public static String getPath() {
+
+         String FILE_PATH=null;
+
+         try {
+
+             FileReader reader = new FileReader("sender.properties");
+
+             Properties property = new Properties();
+
+             property.load(reader);
+
+              FILE_PATH = property.getProperty("path");
+
+
+         } catch (IOException e) {
+
+             // TODO Auto-generated catch block
+
+             e.printStackTrace();
+
+         }
+
+         return FILE_PATH;
+
+     }
+     
+     */
+ 
+
+
 
 /*	
 System.out.println("<<<--- Map iteration start -->>>");
