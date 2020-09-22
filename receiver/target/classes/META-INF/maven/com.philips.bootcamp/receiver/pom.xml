@@ -6,4 +6,13 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>receiver</artifactId>
+  
+  <!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependencies>
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20200518</version>
+</dependency>
+</dependencies>
 </project>
