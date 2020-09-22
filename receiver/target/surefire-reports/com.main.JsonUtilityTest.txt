@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.main.JsonUtilityTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.041 sec <<< FAILURE! - in com.main.JsonUtilityTest
+ifValidJsonObjectReadThenconvertJsonToMap()  Time elapsed: 0.04 sec  <<< ERROR!
+org.json.JSONException: JSONObject["age"] is not a string.
+	at com.main.JsonUtilityTest.ifValidJsonObjectReadThenconvertJsonToMap(JsonUtilityTest.java:46)
+
+ifNullPassedInJsonObjectValueThenconvertJsonToMap()  Time elapsed: 0 sec  <<< ERROR!
+org.json.JSONException: JSONObject["age"] is not a string.
+	at com.main.JsonUtilityTest.ifNullPassedInJsonObjectValueThenconvertJsonToMap(JsonUtilityTest.java:64)
+
