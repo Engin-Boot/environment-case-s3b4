@@ -10,7 +10,6 @@ import java.util.List;
 
 import java.util.Properties;
 
-import org.json.JSONObject;
 
 public class Application {
 
