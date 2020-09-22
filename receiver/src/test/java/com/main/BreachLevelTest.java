@@ -7,24 +7,15 @@ import org.junit.jupiter.api.Test;
 public class BreachLevelTest {
 
 	@Test
-	public void ifValueBeyondWarningErrorLimitsThenSendMessage()
+	public void ifValueBeyondWarningLimitsThenReturnFalse()
 	{
 		int inputVal= 50;
-		int lowLimit= 0;
-		int highLimit= 47;
-		String actual="";
-		
-		if(inputVal < lowLimit)
-        {
-		actual="Limit Breached";
-        }
-		
-		if(inputVal > highLimit)
-        {
-		actual="Limit Breached";
-        }
-		
-		String expected="Limit Breached";
+		int lowLimit= 4;
+		int highLimit= 37;
+		String name="temp";
+		BreachLevel obj= new BreachLevel();
+		boolean actual=obj.warnCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
+		boolean expected=false;
 		
 		assertEquals(expected, actual);
 	}
@@ -33,24 +24,48 @@ public class BreachLevelTest {
 	public void ifValueWithinWarningErrorLimitsThenDontSendMessage()
 	{
 		int inputVal= 35;
-		int lowLimit= 0;
-		int highLimit= 47;
-		String actual="";
+		int lowLimit= 4;
+		int highLimit= 37;
+		String name="temp";
+		BreachLevel obj= new BreachLevel();
+		boolean actual=true;
+		actual=obj.warnCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
 		
-		if(inputVal < lowLimit)
-        {
-		actual="Limit Breached";
-        }
-		
-		if(inputVal > highLimit)
-        {
-		actual="Limit Breached";
-        }
-		
-		String expected="";
+		boolean expected=true;
 		
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void ifValueBeyondErrorLimitsThenReturnFalse()
+	{
+		int inputVal= 50;
+		int lowLimit= 0;
+		int highLimit= 40;
+		String name="temp";
+		BreachLevel obj= new BreachLevel();
+		boolean actual=obj.errorCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
+		boolean expected=false;
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void ifValueWithinerrorErrorLimitsThenDontSendMessage()
+	{
+		int inputVal= 35;
+		int lowLimit= 0;
+		int highLimit= 40;
+		String name="temp";
+		BreachLevel obj= new BreachLevel();
+		boolean actual=true;
+		actual=obj.warnCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
+		
+		boolean expected=true;
+		
+		assertEquals(expected, actual);
+	}
+	
 	
 /*
  * 	 boolean warnCheck(String attributeName, int val, int warnLow, int warnHigh)
