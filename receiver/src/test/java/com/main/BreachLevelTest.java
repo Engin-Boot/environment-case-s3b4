@@ -51,7 +51,7 @@ public class BreachLevelTest {
 	}
 	
 	@Test
-	public void ifValueWithinerrorErrorLimitsThenDontSendMessage()
+	public void ifValueWithinErrorLimitsThenDontSendMessage()
 	{
 		int inputVal= 35;
 		int lowLimit= 0;
