@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class ReadCSVTest {
 	@Test
 	void successfulReadShouldReturnExpectedHeader() throws IOException {
-		final String FILE_PATH = "C:/anaghesh/Bootcamp_Training/Case_Study_1/environment-case-s3b4/sender/EMS_data.csv";
+		final String FILE_PATH =Application.getPath();
 		ReadCSV parser = new ReadCSV();
 		List<String[]> actual = parser.read(FILE_PATH);
 		String[] header = { "temperature", "humidity" };

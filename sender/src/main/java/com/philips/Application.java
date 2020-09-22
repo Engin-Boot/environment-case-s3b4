@@ -13,28 +13,33 @@ import java.util.Properties;
 
 public class Application {
 
-	private static String FILE_PATH = "";
+	
 
 	public static void main(String[] args) {
 
-		try {
-			FileReader reader = new FileReader("sender.properties");
-			Properties property = new Properties();
-			property.load(reader);
-			FILE_PATH = property.getProperty("path");
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		IReader parser = new ReadCSV();
-
-		List<String[]> data = parser.read(FILE_PATH);
+		
+		List<String[]> data = parser.read(getPath());
 
 		IFormatter jsonFormat = new JSONFormatter();
 
 		jsonFormat.format(data);
 
+	}
+	
+	public static String getPath() {
+		String FILE_PATH=null;
+		try {
+			FileReader reader = new FileReader("sender.properties");
+			Properties property = new Properties();
+			property.load(reader);
+			 FILE_PATH = property.getProperty("path");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return FILE_PATH;
 	}
 
 }

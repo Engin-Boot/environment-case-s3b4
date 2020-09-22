@@ -13,9 +13,9 @@ class JSONFormatterTest {
 	@Test
 	void formatShouldReturnNumberOfLinesFormatted() {
 		IFormatter formatter = new JSONFormatter();
-
+		
 		IReader parser = new ReadCSV();
-		final String FILE_PATH = "C:/anaghesh/Bootcamp_Training/Case_Study_1/environment-case-s3b4/sender/EMS_data.csv";
+		final String FILE_PATH = Application.getPath();
 		List<String[]> data = parser.read(FILE_PATH);
 		int actual = formatter.format(data);
 		int expected = 6;
