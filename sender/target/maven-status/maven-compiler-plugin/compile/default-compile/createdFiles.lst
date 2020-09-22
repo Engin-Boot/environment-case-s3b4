@@ -1,0 +1,7 @@
+com\philips\Application.class
+com\philips\IReader.class
+com\philips\IFormatter.class
+com\philips\ReadCSV.class
+com\philips\RecordHandler.class
+com\philips\JSONFormatter.class
+com\philips\Utils.class

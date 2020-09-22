@@ -1,17 +1,20 @@
 package com.philips;
-
+/**
+ * @author anaghesh.m@philips.com
+ * 
+*/
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/*
+/**
  * Utility class
  * Record refers to a row in CSV.
  * */
-public class RecordHandler {
+public class RecordHandler { //formatter
 
 	private RecordHandler() {
-		throw new IllegalStateException("Utility class");
+		throw new IllegalStateException("Utility class, can not be instantiated");
 	}
 
 	public static Map<String, String> getRecord(String[] headers, String[] nextRecord) {
@@ -33,13 +36,6 @@ public class RecordHandler {
 			return "Attribute " + attributeIndex;
 		}
 		return header;
-	}
-
-	public static String formatOutput(Map<String, String> record) {
-
-		String strRecord = record.toString();
-		return strRecord.substring(1, strRecord.length() - 1);
-
 	}
 
 	public static Map<String, String> isRecordValid(Map<String, String> record) {

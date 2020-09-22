@@ -60,6 +60,19 @@ class RecordHandlerTest {
 
 		assertEquals(expected, actual);
 	}
+	@Test
+	void negativeValuesShouldBeAccepted() {
+		String[] headers = { "temperature", "humidity" };
+		String[] nextRecord = { "-10", "20" };
+
+		Map<String, String> expected = new LinkedHashMap<>();
+		expected.put("temperature", "-10");
+		expected.put("humidity", "20");
+		Map<String, String> actual = RecordHandler.getRecord(headers, nextRecord);
+
+		assertEquals(expected, actual);
+	}
+
 
 	@Test
 	void attributeAndValueNullShouldReturnAttributeNoAndNullValues() {
@@ -73,18 +86,5 @@ class RecordHandlerTest {
 
 		assertEquals(expected.toString(), actual.toString());
 	}
-	
-	@Test
-	void outputFormatcheck() {
-		String[] headers = { "temperature", "humidity" };
-		String[] nextRecord = { "10", "20" };
-	
-		Map<String, String> record = RecordHandler.isRecordValid(RecordHandler.getRecord(headers, nextRecord));
-		String actual = RecordHandler.formatOutput(record);
-		
-		String expected = "temperature=10, humidity=20";
-		assertEquals(expected, actual);
-	}
-	
 
 }
