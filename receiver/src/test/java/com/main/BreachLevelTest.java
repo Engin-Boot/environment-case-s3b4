@@ -59,7 +59,7 @@ public class BreachLevelTest {
 		String name="temp";
 		BreachLevel obj= new BreachLevel();
 		boolean actual=true;
-		actual=obj.warnCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
+		actual=obj.errorCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
 		
 		boolean expected=true;
 		
