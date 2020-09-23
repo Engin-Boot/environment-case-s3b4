@@ -4,19 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 public class BreachLevelTest {
-
-	@Test
-	public void ifValueBeyondWarningLimitsThenReturnFalse()
-	{
-		int inputVal= 50;
-		int lowLimit= 4;
-		int highLimit= 37;
-		String name="temp";
-		BreachLevel obj= new BreachLevel();
-		boolean actual=obj.warnCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
-		boolean expected=false;
-		assertEquals(expected, actual);
-	}
+//	@Test
+//	public void ifValueBeyondWarningLimitsThenReturnFalse()
+//	{
+//		int inputVal= 50;
+//		int lowLimit= 4;
+//		int highLimit= 37;
+//		String name="temp";
+//		BreachLevel obj= new BreachLevel();
+//		boolean actual=obj.warnCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
+//		boolean expected=false;
+//		
+//		assertEquals(expected, actual);
+//	}
 	
 	@Test
 	public void ifValueWithinWarningErrorLimitsThenDontSendMessage()
@@ -34,22 +34,22 @@ public class BreachLevelTest {
 		assertEquals(expected, actual);
 	}
 	
+//	@Test
+//	public void ifValueBeyondErrorLimitsThenReturnFalse()
+//	{
+//		int inputVal= 50;
+//		int lowLimit= 0;
+//		int highLimit= 40;
+//		String name="temp";
+//		BreachLevel obj= new BreachLevel();
+//		boolean actual=obj.errorCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
+//		boolean expected=false;
+//		
+//		assertEquals(expected, actual);
+//	}
+//	
 	@Test
-	public void ifValueBeyondErrorLimitsThenReturnFalse()
-	{
-		int inputVal= 50;
-		int lowLimit= 0;
-		int highLimit= 40;
-		String name="temp";
-		BreachLevel obj= new BreachLevel();
-		boolean actual=obj.errorCheckAndSendAlert(name,inputVal,lowLimit,highLimit);
-		boolean expected=false;
-		
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void ifValueWithinerrorErrorLimitsThenDontSendMessage()
+	public void ifValueWithinErrorLimitsThenDontSendMessage()
 	{
 		int inputVal= 35;
 		int lowLimit= 0;

@@ -1,14 +1,14 @@
 
-/*
+/**
 
-  * @author: sanjeev.kumar@philips.com
+  * @author sanjeev.kumar@philips.com
 
  */
 
 package com.main;
 
 import java.io.*;
-//import org.json.simple.JSONObject;
+
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class Application {
 				
 				breachObj.isOperatingConditionsOk(AttributesObj);
 
-				//System.out.println("This is random print: " + flag);
+				
 				readInput = br.readLine();
 
 			}

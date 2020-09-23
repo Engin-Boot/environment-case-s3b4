@@ -60,6 +60,7 @@ class RecordHandlerTest {
 
 		assertEquals(expected, actual);
 	}
+
 	@Test
 	void negativeValuesShouldBeAccepted() {
 		String[] headers = { "temperature", "humidity" };
@@ -72,7 +73,6 @@ class RecordHandlerTest {
 
 		assertEquals(expected, actual);
 	}
-
 
 	@Test
 	void attributeAndValueNullShouldReturnAttributeNoAndNullValues() {

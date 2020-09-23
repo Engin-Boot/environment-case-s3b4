@@ -12,7 +12,7 @@ public class EnvironmentAttribute {
 	
 
 	public EnvironmentAttribute(String AttributeName, int currentValue, int warnLow, int warnHigh, int errorLow, int errorHigh, char unit) {
-		//super();
+	
 		this.AttributeName = AttributeName;
 		this.currentValue = currentValue;
 		this.warnLow = warnLow;
@@ -58,14 +58,6 @@ public class EnvironmentAttribute {
 	}
 	
 	
-
-
-
-/*
-	public char getUnit() {
-		return unit;
-	}
-*/
 
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.21.0" timestamp="2020-09-23T09:56:06.831">
+<file name="C:\anaghesh\Bootcamp_Training\Case_Study_1\environment-case-s3b4\receiver\src\main\java\com\main\JsonUtility.java">
+<violation beginline="17" endline="19" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.main" class="JsonUtility" method="isJSONValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="28" endline="28" begincolumn="41" endcolumn="65" rule="UselessParentheses" ruleset="Code Style" package="com.main" class="JsonUtility" method="convertJsonToMap" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>

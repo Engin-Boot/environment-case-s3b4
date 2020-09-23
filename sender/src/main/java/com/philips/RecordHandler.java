@@ -1,4 +1,5 @@
 package com.philips;
+
 /**
  * @author anaghesh.m@philips.com
  * 
@@ -8,10 +9,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Utility class
- * Record refers to a row in CSV.
- * */
-public class RecordHandler { //formatter
+ * Utility class Record refers to a row in CSV.
+ */
+public class RecordHandler { // formatter
 
 	private RecordHandler() {
 		throw new IllegalStateException("Utility class, can not be instantiated");
@@ -45,7 +45,7 @@ public class RecordHandler { //formatter
 		for (Entry<String, String> entry : currentRecord.entrySet()) {
 			String key = entry.getKey();
 			String value = entry.getValue();
-			
+
 			if (!(value.matches("[0-9]+"))) {
 				value = null;
 				currentRecord.put(key, value);
