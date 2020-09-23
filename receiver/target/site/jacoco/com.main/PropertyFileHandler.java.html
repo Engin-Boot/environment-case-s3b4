@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PropertyFileHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">receiver</a> &gt; <a href="index.source.html" class="el_package">com.main</a> &gt; <span class="el_source">PropertyFileHandler.java</span></div><h1>PropertyFileHandler.java</h1><pre class="source lang-java linenums">package com.main;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.TreeSet;
+
+<span class="nc" id="L14">public class PropertyFileHandler {</span>
+
+	public ArrayList&lt;Integer&gt; getPropValues() throws IOException {
+
+<span class="nc" id="L18">		Map&lt;String, Integer&gt; warnErrorLimits = new LinkedHashMap&lt;String, Integer&gt;();</span>
+
+		try {
+<span class="nc" id="L21">			FileReader reader = new FileReader(&quot;WarningErrorLevel.properties&quot;);</span>
+<span class="nc" id="L22">			Properties property = new Properties();</span>
+<span class="nc" id="L23">			property.load(reader);</span>
+
+<span class="nc" id="L25">			warnErrorLimits = loadFile(property);</span>
+
+<span class="nc" id="L27">		} catch (Exception e) {</span>
+<span class="nc" id="L28">			System.out.println(&quot;Exception: &quot; + e);</span>
+<span class="nc" id="L29">		}</span>
+
+<span class="nc" id="L31">		ArrayList&lt;Integer&gt; warnErrorLimitsValueList = new ArrayList&lt;Integer&gt;(warnErrorLimits.values());</span>
+<span class="nc" id="L32">		return warnErrorLimitsValueList;</span>
+	}
+
+	public Map&lt;String, Integer&gt; loadFile(Properties prop) {
+
+<span class="nc" id="L37">		Map&lt;String, Integer&gt; warnErrorLimits = new LinkedHashMap&lt;String, Integer&gt;();</span>
+
+<span class="nc" id="L39">		Set&lt;Object&gt; keySet = prop.keySet();</span>
+<span class="nc" id="L40">		TreeSet&lt;Object&gt; sortedSet = new TreeSet&lt;Object&gt;(keySet);</span>
+<span class="nc" id="L41">		Iterator&lt;Object&gt; iterator = sortedSet.iterator();</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		while (iterator.hasNext()) {</span>
+<span class="nc" id="L43">			String s = iterator.next().toString();</span>
+<span class="nc" id="L44">			warnErrorLimits.put(s, Integer.parseInt(prop.getProperty(s)));</span>
+
+<span class="nc" id="L46">		}</span>
+<span class="nc" id="L47">		return warnErrorLimits;</span>
+	}
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
 public class ObjectCreateServiceTest {
 
 	@Test
@@ -11,7 +10,7 @@ public class ObjectCreateServiceTest {
 	{
 		String input= "50C";
 		char expected='C';
-		char actual = input.charAt(input.length()-1);
+		char actual = ObjectCreateService.getUnit(input);
 		
 		assertEquals(Character.toString(expected), Character.toString(actual));
 	}
@@ -21,7 +20,7 @@ public class ObjectCreateServiceTest {
 	{
 		String input= "50";
 		char expected='0';
-		char actual = input.charAt(input.length()-1);
+		char actual = ObjectCreateService.getUnit(input);
 		
 		assertEquals(Character.toString(expected), Character.toString(actual));
 	}
@@ -31,7 +30,7 @@ public class ObjectCreateServiceTest {
 	{
 		String input= "50C";
 		int expected=50;
-		int actual = Integer.parseInt(input.substring(0, input.length() - 1));
+		int actual = ObjectCreateService.getCurrentValueWithoutUnit(input);
 		
 		assertEquals(expected, actual);
 	}
@@ -41,7 +40,7 @@ public class ObjectCreateServiceTest {
 	{
 		String input= "50";
 		int expected=5;
-		int actual = Integer.parseInt(input.substring(0, input.length() - 1));
+		int actual = ObjectCreateService.getCurrentValueWithoutUnit(input);
 		
 		assertEquals(expected, actual);
 	}

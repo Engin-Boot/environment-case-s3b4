@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">receiver</a> &gt; <a href="index.source.html" class="el_package">com.main</a> &gt; <span class="el_source">JsonUtility.java</span></div><h1>JsonUtility.java</h1><pre class="source lang-java linenums">package com.main;
+
+import java.util.*;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class JsonUtility {
+
+<span class="nc" id="L10">	private JsonUtility() {</span>
+<span class="nc" id="L11">		throw new IllegalStateException(&quot;Utility class, can not be instantiated&quot;);</span>
+	}
+
+	public static boolean isJSONValid(String input) {
+		try {
+<span class="fc" id="L16">			new JSONObject(input);</span>
+<span class="fc" id="L17">		} catch (JSONException ex) {</span>
+<span class="fc" id="L18">			return false;</span>
+		}
+<span class="fc" id="L20">		return true;</span>
+	}
+
+
+	public static Map&lt;String, String&gt; convertJsonToMap(JSONObject jsonObject) {
+<span class="fc" id="L25">		Map&lt;String, String&gt; environmentConditionAttributes = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L26">		Iterator&lt;String&gt; keys = jsonObject.keys();</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">		while (keys.hasNext()) {</span>
+<span class="fc" id="L28">			String key = keys.next();</span>
+<span class="fc" id="L29">			String value = (jsonObject.getString(key));</span>
+<span class="fc" id="L30">			environmentConditionAttributes.put(key, value);</span>
+		}
+<span class="fc" id="L32">		return environmentConditionAttributes;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

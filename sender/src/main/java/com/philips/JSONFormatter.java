@@ -17,7 +17,7 @@ public class JSONFormatter implements IFormatter {
 			// record = RecordHandler.isRecordValid(record);
 
 			System.out.println(new JSONObject(record));
-			Utils.delay(2);
+			Utils.delay(Application.delayInSeconds);
 		}
 		return data.size();
 

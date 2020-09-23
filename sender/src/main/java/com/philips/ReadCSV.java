@@ -1,11 +1,9 @@
 package com.philips;
 
-
 import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.List;
-
 
 import com.opencsv.CSVReader;
 
@@ -24,6 +22,5 @@ public class ReadCSV implements IReader {
 		}
 		return allData;
 	}
-
 
 }

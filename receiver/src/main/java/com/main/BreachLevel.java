@@ -1,107 +1,53 @@
 package com.main;
 
 public class BreachLevel {
-	
+
 	NotifyWhenBreach notify;
-	
-	void setNotification(NotifyWhenBreach notifiedByMain)
-	{
+
+	void setNotification(NotifyWhenBreach notifiedByMain) {
 		notify = notifiedByMain;
 	}
-	
-	void isOperatingConditionsOk(EnvironmentAttribute[] objAttribute){ // Map<String, Integer> environmentConditionAttributes
-		
-		//boolean flag=true;
-        for(int i=0; i<objAttribute.length; i++){
-        	
-        warnCheckAndSendAlert(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
-        errorCheckAndSendAlert(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(), objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());	
-        }
-		
-		//flag &= 
+
+	void isOperatingConditionsOk(EnvironmentAttribute[] objAttribute) {
+
+		for (int i = 0; i < objAttribute.length; i++) {
+
+			warnCheckAndSendAlert(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(),
+					objAttribute[i].getWarnLow(), objAttribute[i].getWarnHigh());
+			errorCheckAndSendAlert(objAttribute[i].getAttributeName(), objAttribute[i].getCurrentValue(),
+					objAttribute[i].getErrorLow(), objAttribute[i].getErrorHigh());
 		}
 
-	 boolean warnCheckAndSendAlert(String attributeName, int val, int warnLow, int warnHigh)
-	 {
-		 //System.out.println("check check check");
-		 //System.out.println(attributeName + " : " + val +" warn-low "+warnLow+" warn-high "+warnHigh);
-		 
-		 if(val < warnLow)
-	        {
-			    String AlertMsg = "There is a WARN level LOW limit breach for "+attributeName;
-			    notify.sendAlert(AlertMsg);
-	            return false;
-	        }
-		 
-		 if(val > warnHigh)
-	        {
-			    String AlertMsg = "There is a WARN level HIGH limit breach for "+attributeName;
-			    notify.sendAlert(AlertMsg);
-	            return false;
-	        }
-		 return true;
-	 }
-	 
-	 boolean errorCheckAndSendAlert(String attributeName, int val, int errorLow, int errorHigh)
-	 {
-		 //System.out.println("----->");
-		 //System.out.println(attributeName + " : " + val +" error-low "+errorLow+" error-high "+errorHigh);
-		 if(val < errorLow)
-	        {
-			    String AlertMsg = "There is a ERROR level LOW limit breach for "+attributeName;
-			    notify.sendAlert(AlertMsg);
-	            return false;
-	        }
-		 
-		 if(val > errorHigh)
-	        {
-			 String AlertMsg = "There is a ERROR level HIGH limit breach for "+attributeName;
-			 notify.sendAlert(AlertMsg);
-	            return false;
-	        }
-		 return true;
-	 }
+	}
+
+	boolean warnCheckAndSendAlert(String attributeName, int val, int warnLow, int warnHigh) {
+
+		if (val < warnLow) {
+			String AlertMsg = "WARNING : There is a WARN level LOW limit breach for " + attributeName + " :" + val;
+			notify.sendAlert(AlertMsg);
+			return false;
+		}
+
+		if (val > warnHigh) {
+			String AlertMsg = "WARNING : here is a WARN level HIGH limit breach for " + attributeName + " :" + val;
+			notify.sendAlert(AlertMsg);
+			return false;
+		}
+		return true;
+	}
+
+	boolean errorCheckAndSendAlert(String attributeName, int val, int errorLow, int errorHigh) {
+		if (val < errorLow) {
+			String AlertMsg = "ERROR : There is a ERROR level LOW limit breach for " + attributeName + " :" + val;
+			notify.sendAlert(AlertMsg);
+			return false;
+		}
+
+		if (val > errorHigh) {
+			String AlertMsg = "ERROR : There is a ERROR level HIGH limit breach for " + attributeName + " :" + val;
+			notify.sendAlert(AlertMsg);
+			return false;
+		}
+		return true;
+	}
 }
-
-/*
- * 			 flag &= temperatureBreachCheck(environmentConditionAttributes.get("temperature"));
-			 flag &= humidityBreachCheck(environmentConditionAttributes.get("humidity"));
- */
-
-/*
- * 	 boolean temperatureBreachCheck(int temp){
-	 
-	 flag &= errorCheck("temperature", temp, tempErrorLimit[0], tempErrorLimit[1]);
-	 if(flag)
-	 flag &= warnCheck("temperature", temp, tempWarnLimit[0], tempWarnLimit[1]);
-	 return flag;
-	 
-	 }
-	 
-	 boolean humidityBreachCheck(int humidity){
-	 
-	 flag &= errorCheck("humidity", humidity, humidityErrorLimit[0], humidityErrorLimit[1]);
-	 if(flag)
-	 flag &= warnCheck("humidity", humidity, humidityWarnLimit[0], humidityWarnLimit[1]);
-	 return flag;
-	 
-	 }
-		 //boolean flag=true;
-		//environmentConditionAttributes.forEach((attribute, currentValue) -> {
-        //System.out.println(attribute + " : " + currentValue+" "+flag1);
-		//});
- */
-//final int[] tempWarnLimit = {4 , 37};
-//final int[] tempErrorLimit = {0 , 40};
-//final int[] humidityWarnLimit = {-2147483648 , 70};
-//final int[] humidityErrorLimit = {-2147483648 , 90};
-//flag &= temperatureBreachCheck(environmentConditionAttributes.get(temperature);
-/*
-flag &= errorCheck("temperature", environmentConditionAttributes.get("temperature"), tempErrorLimit[0], tempErrorLimit[1]);
-if(flag)
-flag &= warnCheck("temperature", environmentConditionAttributes.get("temperature"), tempWarnLimit[0], tempWarnLimit[1]);
-
-flag &= errorCheck("humidity", environmentConditionAttributes.get("humidity"), humidityErrorLimit[0], humidityErrorLimit[1]);
-if(flag)
-flag &= warnCheck("humidity", environmentConditionAttributes.get("humidity"), humidityWarnLimit[0], humidityWarnLimit[1]);
-*/
